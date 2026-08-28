@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { nav } from "@/lib/data";
+import { smoothScrollTo } from "@/lib/scroll";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -15,20 +16,34 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function handleNavClick(e: MouseEvent<HTMLAnchorElement>, href: string) {
+    e.preventDefault();
+    smoothScrollTo(href);
+  }
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-card-border" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-heading text-lg font-semibold tracking-tight">
+      <div data-nav-bar className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <a
+          href="#top"
+          onClick={(e) => handleNavClick(e, "#top")}
+          className="font-heading text-lg font-semibold tracking-tight"
+        >
           Osamah<span className="text-pink">.</span>
         </a>
 
         <nav className="hidden gap-8 text-sm text-muted md:flex">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="transition-colors hover:text-foreground">
+            <a
+              key={n.href}
+              href={n.href}
+              onClick={(e) => handleNavClick(e, n.href)}
+              className="transition-colors hover:text-foreground"
+            >
               {n.label}
             </a>
           ))}
@@ -72,7 +87,10 @@ export default function Nav() {
                 <a
                   key={n.href}
                   href={n.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false);
+                    handleNavClick(e, n.href);
+                  }}
                   className="flex min-h-11 items-center transition-colors hover:text-foreground"
                 >
                   {n.label}

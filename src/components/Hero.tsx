@@ -5,6 +5,7 @@ import { useRef, type MouseEvent } from "react";
 import { profile, stats } from "@/lib/data";
 import Magnetic from "./Magnetic";
 import Counter from "./Counter";
+import { smoothScrollTo } from "@/lib/scroll";
 
 const headline = "Building software, now bringing it into SAP consulting.";
 
@@ -123,6 +124,10 @@ export default function Hero() {
           <Magnetic>
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("#contact");
+              }}
               className="glow-pulse inline-block rounded-full bg-linear-to-r from-violet via-pink to-orange px-6 py-3 text-sm font-semibold text-white transition-transform duration-200 ease-out hover:scale-[1.03]"
             >
               Get in touch
@@ -131,6 +136,10 @@ export default function Hero() {
           <Magnetic strength={0.25}>
             <a
               href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("#projects");
+              }}
               className="inline-block rounded-full border border-card-border px-6 py-3 text-sm font-semibold text-foreground transition-colors duration-200 ease-out hover:border-pink/60"
             >
               View projects
