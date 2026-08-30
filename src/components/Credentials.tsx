@@ -1,6 +1,7 @@
 import { certificates, education } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import ExternalLink from "./ExternalLink";
 
 export default function Credentials() {
   return (
@@ -14,14 +15,12 @@ export default function Credentials() {
               Education
             </h3>
             <p className="mt-4 font-semibold">{education.degree}</p>
-            <a
+            <ExternalLink
               href={education.schoolHref}
-              target="_blank"
-              rel="noreferrer noopener"
               className="text-muted underline decoration-card-border underline-offset-4 transition-colors hover:text-cyan hover:decoration-cyan"
             >
               {education.school}
-            </a>
+            </ExternalLink>
             <p className="mt-1 text-sm text-muted">
               {education.period} · {education.location}
             </p>
@@ -34,14 +33,12 @@ export default function Credentials() {
             <ul className="mt-4 space-y-4">
               {certificates.map((cert) => (
                 <li key={cert.name}>
-                  <a
+                  <ExternalLink
                     href={cert.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
                     className="font-medium leading-snug underline decoration-card-border underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
                   >
                     {cert.name}
-                  </a>
+                  </ExternalLink>
                   <p className="text-sm text-muted">{cert.issuer}</p>
                 </li>
               ))}

@@ -1,10 +1,28 @@
 "use client";
 
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { projects } from "@/lib/data";
+import { featuredProjects, secondaryProjects } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import TiltCard from "./TiltCard";
+import ExternalLink from "./ExternalLink";
+
+function TagList({ tags, small }: { tags: string[]; small?: boolean }) {
+  return (
+    <div className={`flex flex-wrap gap-2 ${small ? "mt-4 gap-1.5" : "mt-5"}`}>
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className={`rounded-full border border-card-border text-muted ${
+            small ? "px-2.5 py-0.5 text-[11px]" : "px-3 py-1 text-xs"
+          }`}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Projects() {
   return (
@@ -13,48 +31,71 @@ export default function Projects() {
         <SectionHeading eyebrow="Projects" title="Things I've built" />
 
         <div className="grid gap-6 sm:grid-cols-2">
-          {projects.map((project) => {
+          {featuredProjects.map((project) => (
+            <RevealItem key={project.name}>
+              <TiltCard className="gradient-border h-full rounded-2xl border border-card-border bg-card p-8">
+                <h3 className="text-xl font-semibold">{project.name}</h3>
+
+                <div className="mt-5 space-y-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
+                      Problem
+                    </p>
+                    <p className="mt-1.5 leading-relaxed text-muted">{project.problem}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-pink">
+                      Role
+                    </p>
+                    <p className="mt-1.5 leading-relaxed text-muted">{project.role}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-orange">
+                      Result
+                    </p>
+                    <p className="mt-1.5 leading-relaxed text-muted">{project.result}</p>
+                  </div>
+                </div>
+
+                <TagList tags={project.tags} />
+              </TiltCard>
+            </RevealItem>
+          ))}
+        </div>
+
+        <RevealItem className="mt-16 mb-6">
+          <p className="text-sm font-medium uppercase tracking-widest text-muted">Also built</p>
+        </RevealItem>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {secondaryProjects.map((project) => {
             const Card = (
-              <TiltCard className="gradient-border h-full rounded-2xl border border-card-border bg-card p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold">{project.name}</h3>
+              <TiltCard className="gradient-border h-full rounded-xl border border-card-border bg-card p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <h4 className="text-sm font-semibold">{project.name}</h4>
                   {project.href && (
                     <ArrowUpRight
-                      size={18}
+                      size={16}
                       weight="bold"
-                      className="mt-1 shrink-0 text-cyan"
+                      className="mt-0.5 shrink-0 text-cyan"
                       aria-hidden="true"
                     />
                   )}
                 </div>
-                <p className="mt-1 text-xs uppercase tracking-widest text-muted">
+                <p className="mt-1 text-[11px] uppercase tracking-widest text-muted">
                   {project.period}
                 </p>
-                <p className="mt-4 leading-relaxed text-muted">{project.description}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-card-border px-3 py-1 text-xs text-muted"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
+                <TagList tags={project.tags} small />
               </TiltCard>
             );
 
             return (
               <RevealItem key={project.name}>
                 {project.href ? (
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="block h-full"
-                  >
+                  <ExternalLink href={project.href} className="block h-full">
                     {Card}
-                  </a>
+                  </ExternalLink>
                 ) : (
                   Card
                 )}

@@ -10,6 +10,9 @@
   --pink: #ec4899;
   --orange: #f97316;
   --cyan: #22d3ee;
+  --scrollbar-thumb-rest: color-mix(in srgb, var(--pink) 16%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--card-border) 78%, var(--pink) 22%);
+  --scrollbar-thumb-active: color-mix(in srgb, var(--card-border) 20%, var(--pink) 80%);
 }
 
 @theme inline {
@@ -30,6 +33,70 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-hover) var(--background);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-rest);
+  background-clip: padding-box;
+  border: 3px solid var(--background);
+  border-radius: 999px;
+  transition: background-color 0.2s ease-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background);
+}
+
+.tooltip-content {
+  animation: tooltip-out 0.15s ease-in forwards;
+}
+
+.tooltip-content[data-state="delayed-open"],
+.tooltip-content[data-state="instant-open"] {
+  animation: tooltip-in 0.15s ease-out forwards;
+}
+
+@keyframes tooltip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tooltip-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
 }
 
 h1,

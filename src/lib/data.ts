@@ -38,6 +38,11 @@ export const experience = [
       "Communicated app releases to internal stakeholders, gathered feedback, and authored user documentation and how-to manuals to support adoption.",
       "Introduced structured documentation practices that improved cross-team communication and reduced friction between developers.",
       "Performed SQL-based data cleaning and format standardization on the application server.",
+      "Compiled and presented a department-wide IT status and strategic roadmap review to leadership — covering security practices, documentation standards, and training processes across the app portfolio.",
+      {
+        text: "Also contributed to the company website (owned documentation and content organization, working with the developer building it) and recovered/stabilized a previously-built internal password manager application for handoff to production.",
+        muted: true,
+      },
     ],
   },
   {
@@ -53,7 +58,28 @@ export const experience = [
   },
 ];
 
-export const projects = [
+export const featuredProjects = [
+  {
+    name: "3PL — Logistics & Warehouse Visualization Platform",
+    problem:
+      "Warehouse operations needed digitizing — inventory, reporting, and a way for staff to navigate unfamiliar warehouse layouts.",
+    role: "Delivery lead for a 4-person team (2 backend, 2 mobile). Personally led the AR/3D visualization R&D from a standing start — learned Unity, Blender, and Immersal, then scanned and modeled two physical facilities.",
+    result:
+      "Shipped authentication, warehouse/storage CRUD, filtered reporting with Excel export, and inventory management. The AR/3D navigation R&D hit a real hardware limit — mobile cameras couldn't spatially map large warehouse areas — and was shelved in favor of the core platform.",
+    tags: ["PHP", "Flutter", "Unity/Blender (R&D)", "Team Leadership"],
+  },
+  {
+    name: "CarLog — Fleet Maintenance Tracking System",
+    problem:
+      "Vehicle maintenance, equipment checklists, and accident reporting needed a proper system instead of ad hoc tracking.",
+    role: "Owned SRS documentation end-to-end across 4 revisions, coordinated a backend and a mobile developer, ran the phase 2 planning cycle.",
+    result:
+      "Shipped authentication, a notification system, exportable maintenance and accident records, and conditional equipment checklist logic.",
+    tags: ["SRS/Requirements", "PHP", "Flutter", "JWT Auth"],
+  },
+];
+
+export const secondaryProjects = [
   {
     name: "Horse Racing Database System",
     period: "02/2024 – 03/2024",
@@ -119,12 +145,12 @@ export const certificates = [
   {
     name: "SAP Certified Associate – E2E Business Processes for SAP Business Suite (IEE2E)",
     issuer: "SAP · via YPP",
-    href: "https://www.linkedin.com/posts/osamakb_sapyoungprofessionalsforpartnertalent-sapdigitalskillscenter-share-7460300039249387520-fo42",
+    href: "https://www.credly.com/badges/6084f08d-fb83-45af-88c5-4aec47faff3e",
   },
   {
     name: "SAP Certified Associate – SAP Generative AI Developer (C_AIG)",
     issuer: "SAP · via YPP",
-    href: "https://www.linkedin.com/posts/osamakb_sapbusinessai-sapgenerativeai-sapbtp-share-7467280344518590464-jJ2-/",
+    href: "https://www.credly.com/badges/2457f6aa-c606-4194-8f14-2c94911221e4/public_url",
   },
   {
     name: "70-462: SQL Server Database Administration (DBA)",

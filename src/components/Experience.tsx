@@ -1,6 +1,7 @@
 import { experience } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import ExternalLink from "./ExternalLink";
 
 export default function Experience() {
   return (
@@ -17,23 +18,32 @@ export default function Experience() {
               </p>
               <h3 className="mt-1 text-xl font-semibold">{job.role}</h3>
               <p className="text-muted">
-                <a
+                <ExternalLink
                   href={job.orgHref}
-                  target="_blank"
-                  rel="noreferrer noopener"
                   className="underline decoration-card-border underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
                 >
                   {job.org}
-                </a>{" "}
+                </ExternalLink>{" "}
                 · {job.location}
               </p>
               <ul className="mt-4 space-y-2 text-muted">
-                {job.points.map((point) => (
-                  <li key={point} className="flex gap-3 leading-relaxed">
-                    <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-pink" />
-                    <span>{point}</span>
-                  </li>
-                ))}
+                {job.points.map((point) => {
+                  const isMuted = typeof point !== "string" && point.muted;
+                  const text = typeof point === "string" ? point : point.text;
+                  return (
+                    <li
+                      key={text}
+                      className={`flex gap-3 leading-relaxed ${isMuted ? "text-sm text-muted/70" : ""}`}
+                    >
+                      <span
+                        className={`shrink-0 rounded-full bg-pink ${
+                          isMuted ? "mt-2 h-[3px] w-[3px] opacity-60" : "mt-2.5 h-1 w-1"
+                        }`}
+                      />
+                      <span>{text}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </RevealItem>
           ))}

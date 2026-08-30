@@ -1,15 +1,11 @@
-import { EnvelopeSimple, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
+import { GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import Magnetic from "./Magnetic";
+import CopyEmailButton from "./CopyEmailButton";
+import ExternalLink from "./ExternalLink";
 
 const links = [
-  {
-    label: "Email",
-    value: profile.links.email,
-    href: `mailto:${profile.links.email}`,
-    Icon: EnvelopeSimple,
-  },
   { label: "GitHub", value: "github.com/OzyCode", href: profile.links.github, Icon: GithubLogo },
   {
     label: "LinkedIn",
@@ -37,17 +33,19 @@ export default function Contact() {
         </RevealItem>
 
         <RevealItem className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Magnetic strength={0.2}>
+            <CopyEmailButton email={profile.links.email} />
+          </Magnetic>
+
           {links.map((link) => (
             <Magnetic key={link.label} strength={0.2}>
-              <a
+              <ExternalLink
                 href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
                 className="flex items-center gap-2 rounded-full border border-card-border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:border-pink/60 hover:text-pink"
               >
                 <link.Icon size={18} weight="bold" aria-hidden="true" />
                 {link.value}
-              </a>
+              </ExternalLink>
             </Magnetic>
           ))}
         </RevealItem>
