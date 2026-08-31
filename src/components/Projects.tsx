@@ -30,34 +30,42 @@ export default function Projects() {
       <RevealGroup>
         <SectionHeading eyebrow="Projects" title="Things I've built" />
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 sm:grid-rows-[auto_auto]">
           {featuredProjects.map((project) => (
-            <RevealItem key={project.name}>
-              <TiltCard className="gradient-border h-full rounded-2xl border border-card-border bg-card p-8">
-                <h3 className="text-xl font-semibold">{project.name}</h3>
+            <RevealItem key={project.name} className="sm:grid sm:grid-rows-subgrid sm:row-span-2">
+              <TiltCard
+                tiltStrength={3}
+                className="gradient-border h-full rounded-2xl border border-card-border bg-card p-8 sm:grid sm:grid-rows-subgrid sm:row-span-2"
+              >
+                <div>
+                  <h3 className="text-xl font-semibold">{project.name}</h3>
 
-                <div className="mt-5 space-y-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
-                      Problem
-                    </p>
-                    <p className="mt-1.5 leading-relaxed text-muted">{project.problem}</p>
+                  <div className="mt-5 space-y-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
+                        Problem
+                      </p>
+                      <p className="mt-1.5 leading-relaxed text-muted">{project.problem}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-pink">
+                        Role
+                      </p>
+                      <p className="mt-1.5 leading-relaxed text-muted">{project.role}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-pink">
-                      Role
-                    </p>
-                    <p className="mt-1.5 leading-relaxed text-muted">{project.role}</p>
-                  </div>
-                  <div>
+                </div>
+
+                <div>
+                  <div className="mt-4">
                     <p className="text-xs font-semibold uppercase tracking-widest text-orange">
                       Result
                     </p>
                     <p className="mt-1.5 leading-relaxed text-muted">{project.result}</p>
                   </div>
-                </div>
 
-                <TagList tags={project.tags} />
+                  <TagList tags={project.tags} />
+                </div>
               </TiltCard>
             </RevealItem>
           ))}

@@ -25,7 +25,6 @@ export default function CopyEmailButton({ email }: { email: string }) {
   return (
     <motion.button
       type="button"
-      layout
       onClick={handleCopy}
       suppressHydrationWarning
       className={`relative flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out cursor-pointer ${
@@ -73,19 +72,24 @@ export default function CopyEmailButton({ email }: { email: string }) {
         </AnimatePresence>
       </span>
 
-      <span className="relative overflow-hidden">
-        <AnimatePresence initial={false} mode="popLayout">
-          <motion.span
-            key={copied ? "copied" : "value"}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="block"
-          >
-            {copied ? "Copied!" : email}
-          </motion.span>
-        </AnimatePresence>
+      <span className="relative grid">
+        <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">
+          {email.length >= "Copied!".length ? email : "Copied!"}
+        </span>
+        <span className="col-start-1 row-start-1 overflow-hidden">
+          <AnimatePresence initial={false} mode="popLayout">
+            <motion.span
+              key={copied ? "copied" : "value"}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="block whitespace-nowrap"
+            >
+              {copied ? "Copied!" : email}
+            </motion.span>
+          </AnimatePresence>
+        </span>
       </span>
 
       <span className="sr-only" aria-live="polite">

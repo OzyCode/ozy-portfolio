@@ -6,9 +6,11 @@ import { useRef, type MouseEvent, type ReactNode } from "react";
 export default function TiltCard({
   children,
   className,
+  tiltStrength = 14,
 }: {
   children: ReactNode;
   className?: string;
+  tiltStrength?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const rotateX = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
@@ -22,8 +24,8 @@ export default function TiltCard({
     if (!rect) return;
     const px = (e.clientX - rect.left) / rect.width;
     const py = (e.clientY - rect.top) / rect.height;
-    rotateY.set((px - 0.5) * 14);
-    rotateX.set((0.5 - py) * 14);
+    rotateY.set((px - 0.5) * tiltStrength);
+    rotateX.set((0.5 - py) * tiltStrength);
     shineX.set(px * 100);
     shineY.set(py * 100);
   }
