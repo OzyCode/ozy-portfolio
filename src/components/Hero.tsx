@@ -40,34 +40,37 @@ export default function Hero() {
       id="top"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="relative flex min-h-screen items-center overflow-hidden pt-[clamp(4.5rem,10vh,6rem)]"
     >
       <motion.div
         aria-hidden
-        style={reduceMotion ? undefined : { y: blobY, opacity: blobOpacity }}
-        className="pointer-events-none absolute inset-0 -z-10 saturate-[1.2]"
+        style={{
+          ...(reduceMotion ? undefined : { y: blobY, opacity: blobOpacity }),
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 82%)",
+          maskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 82%)",
+        }}
+        className="pointer-events-none absolute inset-0 -z-10"
       >
         <motion.div
-          className="absolute -left-32 top-10 h-[28rem] w-[28rem] rounded-full bg-violet/50 blur-[110px]"
+          className="absolute -left-32 top-10 h-[28rem] w-[28rem] rounded-full bg-violet/35 blur-[110px]"
           animate={{ x: [0, 50, 0], y: [0, 35, 0], scale: [1, 1.08, 1] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-0 top-32 h-[26rem] w-[26rem] rounded-full bg-pink/40 blur-[110px]"
+          className="absolute right-0 top-32 h-[26rem] w-[26rem] rounded-full bg-pink/28 blur-[110px]"
           animate={{ x: [0, -40, 0], y: [0, 45, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 19, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-orange/30 blur-[110px]"
+          className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-orange/20 blur-[110px]"
           animate={{ x: [0, 35, 0], y: [0, -25, 0], scale: [1, 1.06, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-1/4 bottom-10 h-72 w-72 rounded-full bg-cyan/20 blur-[110px]"
+          className="absolute right-1/4 bottom-10 h-72 w-72 rounded-full bg-cyan/15 blur-[110px]"
           animate={{ x: [0, -25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 21, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="grain-overlay absolute inset-0" />
       </motion.div>
 
       {!reduceMotion && (
@@ -115,7 +118,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
-          className="mt-6 max-w-xl text-lg text-muted"
+          className="mt-[clamp(1rem,2.5vh,1.5rem)] max-w-xl text-lg text-muted"
         >
           {profile.tagline}
         </motion.p>
@@ -124,7 +127,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.75 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-[clamp(1.5rem,4vh,2.5rem)] flex flex-wrap items-center gap-4"
         >
           <Magnetic>
             <a
@@ -156,7 +159,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
           transition={{ staggerChildren: 0.08, delayChildren: 0.9 }}
-          className="mt-16 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4"
+          className="mt-[clamp(1.5rem,5vh,4rem)] grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4"
         >
           {stats.map((stat) => (
             <motion.div

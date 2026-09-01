@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import * as Popover from "@radix-ui/react-popover";
 import { useReducedMotion } from "motion/react";
 import { Play, Pause } from "@phosphor-icons/react/dist/ssr";
 
@@ -23,8 +23,8 @@ export default function VideoPreview({ src }: { src: string }) {
   }
 
   return (
-    <Tooltip.Root onOpenChange={(isOpen) => !isOpen && setPlaying(false)}>
-      <Tooltip.Trigger asChild>
+    <Popover.Root onOpenChange={(isOpen) => !isOpen && setPlaying(false)}>
+      <Popover.Trigger asChild>
         <button
           type="button"
           suppressHydrationWarning
@@ -33,13 +33,13 @@ export default function VideoPreview({ src }: { src: string }) {
           <Play size={11} weight="fill" />
           Preview the clip
         </button>
-      </Tooltip.Trigger>
-      <Tooltip.Portal>
-        <Tooltip.Content
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Content
           sideOffset={10}
           collisionPadding={12}
           className="tooltip-content z-50 overflow-hidden rounded-xl border border-card-border bg-card shadow-2xl"
-          style={{ transformOrigin: "var(--radix-tooltip-content-transform-origin)" }}
+          style={{ transformOrigin: "var(--radix-popover-content-transform-origin)" }}
         >
           <div className="relative">
             <video
@@ -68,9 +68,9 @@ export default function VideoPreview({ src }: { src: string }) {
               </button>
             )}
           </div>
-          <Tooltip.Arrow className="fill-card" />
-        </Tooltip.Content>
-      </Tooltip.Portal>
-    </Tooltip.Root>
+          <Popover.Arrow className="fill-card" />
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
   );
 }

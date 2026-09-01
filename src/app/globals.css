@@ -73,7 +73,8 @@ html {
 }
 
 .tooltip-content[data-state="delayed-open"],
-.tooltip-content[data-state="instant-open"] {
+.tooltip-content[data-state="instant-open"],
+.tooltip-content[data-state="open"] {
   animation: tooltip-in 0.15s ease-out forwards;
 }
 
@@ -186,6 +187,100 @@ h3 {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.05;
   mix-blend-mode: overlay;
+}
+
+.ambient-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+}
+
+.ambient-blob-a {
+  left: -10%;
+  top: 2%;
+  height: 24rem;
+  width: 24rem;
+  background: var(--violet);
+  opacity: 0.16;
+  animation: ambient-float-a 26s ease-in-out infinite;
+}
+
+.ambient-blob-b {
+  right: -12%;
+  top: 32%;
+  height: 27rem;
+  width: 27rem;
+  background: var(--cyan);
+  opacity: 0.13;
+  animation: ambient-float-b 32s ease-in-out infinite;
+}
+
+.ambient-blob-c {
+  left: -8%;
+  top: 64%;
+  height: 22rem;
+  width: 22rem;
+  background: var(--pink);
+  opacity: 0.14;
+  animation: ambient-float-c 29s ease-in-out infinite;
+}
+
+.ambient-blob-d {
+  right: -10%;
+  bottom: -6%;
+  height: 23rem;
+  width: 23rem;
+  background: var(--orange);
+  opacity: 0.13;
+  animation: ambient-float-d 24s ease-in-out infinite;
+}
+
+@keyframes ambient-float-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, 8%) scale(1.1);
+  }
+}
+
+@keyframes ambient-float-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-8%, 6%) scale(1.08);
+  }
+}
+
+@keyframes ambient-float-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(7%, -6%) scale(1.12);
+  }
+}
+
+@keyframes ambient-float-d {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-6%, -8%) scale(1.07);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
