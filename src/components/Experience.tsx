@@ -2,6 +2,7 @@ import { experience } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import ExternalLink from "./ExternalLink";
+import VideoPreview from "./VideoPreview";
 
 export default function Experience() {
   return (
@@ -30,6 +31,7 @@ export default function Experience() {
                 {job.points.map((point) => {
                   const isMuted = typeof point !== "string" && point.muted;
                   const text = typeof point === "string" ? point : point.text;
+                  const video = typeof point === "string" ? undefined : point.video;
                   return (
                     <li
                       key={text}
@@ -40,7 +42,10 @@ export default function Experience() {
                           isMuted ? "mt-2 h-[3px] w-[3px] opacity-60" : "mt-2.5 h-1 w-1"
                         }`}
                       />
-                      <span>{text}</span>
+                      <span>
+                        {text}
+                        {video && <VideoPreview src={video} />}
+                      </span>
                     </li>
                   );
                 })}

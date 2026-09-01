@@ -14,7 +14,16 @@ export const profile = {
   },
 };
 
-export const experience = [
+type ExperiencePoint = string | { text: string; muted?: boolean; video?: string };
+
+export const experience: {
+  org: string;
+  orgHref: string;
+  role: string;
+  period: string;
+  location: string;
+  points: ExperiencePoint[];
+}[] = [
   {
     org: "SAP · SAP Digital Skills Center",
     orgHref: "https://www.sap.com/mena/training-certification/digital-skills-center.html",
@@ -38,7 +47,10 @@ export const experience = [
       "Communicated app releases to internal stakeholders, gathered feedback, and authored user documentation and how-to manuals to support adoption.",
       "Introduced structured documentation practices that improved cross-team communication and reduced friction between developers.",
       "Performed SQL-based data cleaning and format standardization on the application server.",
-      "Compiled and presented a department-wide IT status and strategic roadmap review to leadership — covering security practices, documentation standards, and training processes across the app portfolio.",
+      {
+        text: "Compiled and presented a department-wide IT status and strategic roadmap review to leadership — covering security practices, documentation standards, and training processes across the app portfolio.",
+        video: "/videos/roadmap-presentation.mp4",
+      },
       {
         text: "Also contributed to the company website (owned documentation and content organization, working with the developer building it) and recovered/stabilized a previously-built internal password manager application for handoff to production.",
         muted: true,

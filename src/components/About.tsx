@@ -12,7 +12,7 @@ export default function About() {
         <SectionHeading eyebrow="About" title="A bit about me" />
 
         <RevealItem className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
-          <div className="mx-auto w-48 shrink-0 sm:w-56 md:mx-0 md:w-64">
+          <div className="relative mx-auto w-48 shrink-0 sm:w-56 md:mx-0 md:w-64">
             <TiltCard className="gradient-border relative aspect-[2/3] overflow-hidden rounded-3xl border border-card-border bg-card">
               <Image
                 src="/images/profile.jpg"
@@ -23,6 +23,15 @@ export default function About() {
                 priority
               />
             </TiltCard>
+            <div className="absolute -bottom-4 -right-4 aspect-square w-16 -rotate-6 overflow-hidden rounded-xl border-2 border-background shadow-lg sm:w-20">
+              <Image
+                src="/images/work-photo.jpeg"
+                alt="Working with a colleague on the 3PL and CarLog projects"
+                fill
+                sizes="5rem"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="min-w-0 flex-1">
