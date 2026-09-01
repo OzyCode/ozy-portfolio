@@ -9,6 +9,15 @@ export default function VideoPreview({ src }: { src: string }) {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  function handleOpenChange(isOpen: boolean) {
+    if (isOpen) {
+      setIsLoading(true);
+    } else {
+      setPlaying(false);
+    }
+  }
 
   function togglePlayback() {
     const video = videoRef.current;
@@ -23,7 +32,7 @@ export default function VideoPreview({ src }: { src: string }) {
   }
 
   return (
-    <Popover.Root onOpenChange={(isOpen) => !isOpen && setPlaying(false)}>
+    <Popover.Root onOpenChange={handleOpenChange}>
       <Popover.Trigger asChild>
         <button
           type="button"
@@ -54,9 +63,27 @@ export default function VideoPreview({ src }: { src: string }) {
               disableRemotePlayback
               controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
               onContextMenu={(e) => e.preventDefault()}
+              onLoadedData={() => setIsLoading(false)}
+              onWaiting={() => setIsLoading(true)}
+              onPlaying={() => setIsLoading(false)}
               className="block aspect-video w-72 object-cover sm:w-80"
             />
-            {reduceMotion && (
+            {isLoading && (
+              <div
+                role="status"
+                aria-live="polite"
+                className="absolute inset-0 flex items-center justify-center bg-card"
+              >
+                <span
+                  aria-hidden
+                  className={`h-6 w-6 rounded-full border-2 border-card-border border-t-cyan ${
+                    reduceMotion ? "animate-pulse" : "animate-spin"
+                  }`}
+                />
+                <span className="sr-only">Loading preview…</span>
+              </div>
+            )}
+            {reduceMotion && !isLoading && (
               <button
                 type="button"
                 onClick={togglePlayback}
