@@ -2,6 +2,7 @@
 
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react";
 import { useRef, type MouseEvent, type ReactNode } from "react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export default function TiltCard({
   children,
@@ -13,6 +14,7 @@ export default function TiltCard({
   tiltStrength?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotionSafe();
   const rotateX = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
   const rotateY = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
   const shineX = useMotionValue(50);
@@ -20,6 +22,7 @@ export default function TiltCard({
   const shineBackground = useMotionTemplate`radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.14), transparent 55%)`;
 
   function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (reduceMotion) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     const px = (e.clientX - rect.left) / rect.width;
@@ -40,17 +43,19 @@ export default function TiltCard({
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ y: -4 }}
+      whileHover={reduceMotion ? undefined : { y: -4 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      style={reduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 800 }}
       className={`relative ${className ?? ""}`}
     >
       {children}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style={{ background: shineBackground }}
-      />
+      {!reduceMotion && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-[inherit]"
+          style={{ background: shineBackground }}
+        />
+      )}
     </motion.div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useRef, type MouseEvent, type ReactNode } from "react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export default function Magnetic({
   children,
@@ -13,12 +14,14 @@ export default function Magnetic({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotionSafe();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 12, mass: 0.15 });
   const springY = useSpring(y, { stiffness: 150, damping: 12, mass: 0.15 });
 
   function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (reduceMotion) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     x.set((e.clientX - rect.left - rect.width / 2) * strength);
@@ -35,7 +38,7 @@ export default function Magnetic({
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
+      style={reduceMotion ? undefined : { x: springX, y: springY }}
       className={`inline-block ${className ?? ""}`}
     >
       {children}

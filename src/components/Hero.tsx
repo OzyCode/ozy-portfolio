@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef, type MouseEvent } from "react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { profile, stats } from "@/lib/data";
 import Magnetic from "./Magnetic";
 import Counter from "./Counter";
@@ -12,6 +13,7 @@ const headline = "Building software, now bringing it into SAP consulting.";
 export default function Hero() {
   const words = headline.split(" ");
   const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotionSafe();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -26,6 +28,7 @@ export default function Hero() {
   const springY = useSpring(spotlightY, { stiffness: 120, damping: 25 });
 
   function handleMouseMove(e: MouseEvent<HTMLElement>) {
+    if (reduceMotion) return;
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
     spotlightX.set(e.clientX - rect.left);
@@ -41,7 +44,7 @@ export default function Hero() {
     >
       <motion.div
         aria-hidden
-        style={{ y: blobY, opacity: blobOpacity }}
+        style={reduceMotion ? undefined : { y: blobY, opacity: blobOpacity }}
         className="pointer-events-none absolute inset-0 -z-10 saturate-[1.2]"
       >
         <motion.div
@@ -67,18 +70,20 @@ export default function Hero() {
         <div className="grain-overlay absolute inset-0" />
       </motion.div>
 
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full opacity-70 mix-blend-plus-lighter"
-        style={{
-          left: springX,
-          top: springY,
-          x: "-50%",
-          y: "-50%",
-          background:
-            "radial-gradient(circle, rgba(236,72,153,0.25), rgba(139,92,246,0.15) 45%, transparent 70%)",
-        }}
-      />
+      {!reduceMotion && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full opacity-70 mix-blend-plus-lighter"
+          style={{
+            left: springX,
+            top: springY,
+            x: "-50%",
+            y: "-50%",
+            background:
+              "radial-gradient(circle, rgba(236,72,153,0.25), rgba(139,92,246,0.15) 45%, transparent 70%)",
+          }}
+        />
+      )}
 
       <div className="mx-auto w-full max-w-5xl px-6">
         <motion.p
