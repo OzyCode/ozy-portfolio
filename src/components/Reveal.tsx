@@ -22,7 +22,7 @@ export function RevealGroup({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-80px 0px" }}
       transition={{ staggerChildren: stagger }}
     >
       {children}
