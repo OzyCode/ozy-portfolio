@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "osamahalbahnasi-portfolio",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "osamahalbahnasi.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.osamahalbahnasi.com",
+      "custom_domain": true
+    }
+  ]
+}
