@@ -200,7 +200,7 @@ h3 {
 .ambient-blob {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(120px);
+  will-change: transform;
 }
 
 .ambient-blob-a {
@@ -208,8 +208,8 @@ h3 {
   top: 2%;
   height: 24rem;
   width: 24rem;
-  background: var(--violet);
-  opacity: 0.16;
+  background: radial-gradient(circle, var(--violet) 0%, transparent 70%);
+  opacity: 0.4;
   animation: ambient-float-a 26s ease-in-out infinite;
 }
 
@@ -218,8 +218,8 @@ h3 {
   top: 32%;
   height: 27rem;
   width: 27rem;
-  background: var(--cyan);
-  opacity: 0.13;
+  background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+  opacity: 0.32;
   animation: ambient-float-b 32s ease-in-out infinite;
 }
 
@@ -228,8 +228,8 @@ h3 {
   top: 64%;
   height: 22rem;
   width: 22rem;
-  background: var(--pink);
-  opacity: 0.14;
+  background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+  opacity: 0.35;
   animation: ambient-float-c 29s ease-in-out infinite;
 }
 
@@ -238,8 +238,8 @@ h3 {
   bottom: -6%;
   height: 23rem;
   width: 23rem;
-  background: var(--orange);
-  opacity: 0.13;
+  background: radial-gradient(circle, var(--orange) 0%, transparent 70%);
+  opacity: 0.32;
   animation: ambient-float-d 24s ease-in-out infinite;
 }
 

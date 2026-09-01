@@ -125,7 +125,7 @@ export default function SectionDivider({ index = 0 }: { index?: number }) {
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <motion.div
-          className="h-full w-full rounded-full opacity-[0.14] blur-[85px]"
+          className="h-full w-full rounded-full opacity-[0.22] blur-[20px]"
           style={{ background: gradient }}
           animate={{ x: [-24, 24, -24], y: [-10, 10, -10], scale: [1, 1.2, 1] }}
           transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}

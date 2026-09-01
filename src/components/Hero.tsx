@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { useRef, type MouseEvent } from "react";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { profile, stats } from "@/lib/data";
@@ -14,13 +14,6 @@ export default function Hero() {
   const words = headline.split(" ");
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotionSafe();
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const blobY = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  const blobOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   const spotlightX = useMotionValue(-400);
   const spotlightY = useMotionValue(-400);
@@ -42,37 +35,6 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       className="relative flex min-h-screen items-center overflow-hidden pt-[clamp(4.5rem,10vh,6rem)]"
     >
-      <motion.div
-        aria-hidden
-        style={{
-          ...(reduceMotion ? undefined : { y: blobY, opacity: blobOpacity }),
-          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 82%)",
-          maskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 82%)",
-        }}
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        <motion.div
-          className="absolute -left-32 top-10 h-[28rem] w-[28rem] rounded-full bg-violet/35 blur-[110px]"
-          animate={{ x: [0, 50, 0], y: [0, 35, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute right-0 top-32 h-[26rem] w-[26rem] rounded-full bg-pink/28 blur-[110px]"
-          animate={{ x: [0, -40, 0], y: [0, 45, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 19, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-orange/20 blur-[110px]"
-          animate={{ x: [0, 35, 0], y: [0, -25, 0], scale: [1, 1.06, 1] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute right-1/4 bottom-10 h-72 w-72 rounded-full bg-cyan/15 blur-[110px]"
-          animate={{ x: [0, -25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 21, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
-
       {!reduceMotion && (
         <motion.div
           aria-hidden

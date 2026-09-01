@@ -48,6 +48,7 @@ export default function VideoPreview({ src }: { src: string }) {
               muted
               loop
               playsInline
+              preload="auto"
               autoPlay={!reduceMotion}
               disablePictureInPicture
               disableRemotePlayback
