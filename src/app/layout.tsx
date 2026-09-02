@@ -21,11 +21,22 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+const title = "Osamah AlBahnasi — Junior SAP Consultant & Software Engineer";
+const description =
+  "SAP-certified junior consultant and software engineer. SAP YPP trainee, former delivery lead at RFID Saudi Trading Company.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://osamahalbahnasi.com"),
-  title: "Osamah AlBahnasi — Junior SAP Consultant & Software Engineer",
-  description:
-    "SAP-certified junior consultant and software engineer. SAP YPP trainee, former delivery lead at RFID Saudi Trading Company.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "https://osamahalbahnasi.com",
+    siteName: "Osamah AlBahnasi",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
