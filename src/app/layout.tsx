@@ -22,6 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://osamahalbahnasi.com"),
   title: "Osamah AlBahnasi — Junior SAP Consultant & Software Engineer",
   description:
     "SAP-certified junior consultant and software engineer. SAP YPP trainee, former delivery lead at RFID Saudi Trading Company.",
