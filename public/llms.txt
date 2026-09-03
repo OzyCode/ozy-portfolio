@@ -1,0 +1,45 @@
+# Osamah AlBahnasi
+
+> Junior SAP Consultant · Software Engineer, based in Saudi Arabia. SAP-certified consultant and software engineer who's led delivery teams, shipped enterprise tooling, and is now taking that into ERP consulting.
+
+Selected from 1,500+ global applicants (one of ~30 accepted) into SAP's Young Professionals Program (YPP), with SAP Certified Associate credentials in E2E Business Processes and Generative AI. Prior to SAP, three years as a software engineer at RFID Saudi Trading Company, where he took ownership of a cross-functional development team (UI/UX, PHP backend, Flutter mobile) as business analyst and delivery lead. Currently targeting a junior SAP consultant role (ERP / S/4HANA / BTP). Also exploring workflow automation, building with n8n to connect systems and automate processes end-to-end.
+
+## Experience
+
+- **SAP · SAP Digital Skills Center** — Young Professionals Program (YPP) Trainee, 04/2026–06/2026, Riyadh, Saudi Arabia. Selected from 1,500+ global applicants into SAP's flagship partner talent program; trained across SAP Business Suite, BTP, and Generative AI; earned SAP Certified Associate credentials in E2E Business Processes (IEE2E) and Generative AI Developer (C_AIG).
+- **RFID Saudi Trading Company** — Software Engineer, 10/2022–09/2025, Dammam, Saudi Arabia. Took ownership of a cross-functional team (UI/UX, PHP backend, Flutter mobile) as business analyst and delivery lead; coordinated requirements and app releases with stakeholders; introduced structured documentation practices; performed SQL-based data cleaning; presented a department-wide IT status and strategic roadmap review to leadership.
+- **National Talents Company** — Technology Coordinator Assistant, 07/2018–08/2018, Dhahran, Saudi Arabia. Deployed and configured 800+ Raspberry Pi devices for national educational initiatives.
+
+## Projects
+
+- **3PL — Logistics & Warehouse Visualization Platform**: Delivery lead for a 4-person team (2 backend, 2 mobile). Shipped authentication, warehouse/storage CRUD, filtered reporting with Excel export, and inventory management. Also led AR/3D warehouse-navigation R&D (Unity, Blender, Immersal) from a standing start, scanning and modeling two physical facilities — shelved after hitting a real mobile-camera spatial-mapping hardware limit.
+- **CarLog — Fleet Maintenance Tracking System**: Owned SRS documentation end-to-end across 4 revisions, coordinated a backend and a mobile developer, ran the phase 2 planning cycle. Shipped authentication, a notification system, exportable maintenance and accident records, and conditional equipment checklist logic.
+- [Horse Racing Database System](https://github.com/OzyCode/ICS424_HorseRace): PostgreSQL analytical database with optimized queries, stored procedures, and triggers.
+- [Uber Trip Analytics & ML Predictor](https://github.com/muzammilbehzad/Students-Projects-ICS474-Big-Data-Analytics-Fall-2024/tree/main/Project_s201970750_s201970370): Predictive models (Linear Regression, Random Forest) on trip patterns.
+- [Blood Drive Management System](https://github.com/jawad-alalasi/ICS321): Web platform for managing blood donation drives, built with Agile practices.
+- [This Portfolio](https://github.com/OzyCode/animations-demo): This site itself — built with Next.js and Motion for React, exploring scroll-driven reveals, gradient motion, and reduced-motion-aware interactions.
+
+## Skills
+
+- **SAP**: Business Suite, BTP, Generative AI (C_AIG), E2E Processes (IEE2E)
+- **Programming**: Python, SQL, JavaScript, Node.js, Express.js, RESTful APIs
+- **Databases**: PostgreSQL, MySQL, SQL Server, SQLite
+- **Tools**: Git, Docker, Linux, Jupyter, Postman
+- **Automation**: n8n, Workflow Automation, API Integrations
+- **Delivery**: Agile, SRS Documentation, Requirements Gathering, Stakeholder Coordination
+
+## Certifications
+
+- SAP Certified Associate – E2E Business Processes for SAP Business Suite (IEE2E), via SAP YPP
+- SAP Certified Associate – SAP Generative AI Developer (C_AIG), via SAP YPP
+- 70-462: SQL Server Database Administration (DBA), Microsoft · Udemy
+
+## Education
+
+- B.S. Software Engineering, King Fahd University of Petroleum and Minerals (KFUPM), 09/2019–12/2024, Dhahran, Saudi Arabia
+
+## Contact
+
+- [GitHub](https://github.com/OzyCode)
+- [LinkedIn](https://www.linkedin.com/in/osamakb/)
+- Email: OsamahBah@hotmail.com

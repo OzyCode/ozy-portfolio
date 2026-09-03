@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef, type MouseEvent } from "react";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { profile, stats } from "@/lib/data";
@@ -20,12 +20,23 @@ export default function Hero() {
   const springX = useSpring(spotlightX, { stiffness: 120, damping: 25 });
   const springY = useSpring(spotlightY, { stiffness: 120, damping: 25 });
 
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const spotlightOpacity = useTransform(scrollYProgress, [0, 1], [0.7, 0]);
+
+  // Glow is a 500px circle that fades to transparent past 70% of its radius
+  // (175px) — keeping its center at least that far from the section's own
+  // overflow-hidden edges means the clip only ever removes fully-transparent
+  // pixels, so it never shows as a hard-edged cutoff.
+  const GLOW_SAFE_MARGIN = 175;
+
   function handleMouseMove(e: MouseEvent<HTMLElement>) {
     if (reduceMotion) return;
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
-    spotlightX.set(e.clientX - rect.left);
-    spotlightY.set(e.clientY - rect.top);
+    const clamp = (value: number, min: number, max: number) =>
+      min > max ? (min + max) / 2 : Math.min(Math.max(value, min), max);
+    spotlightX.set(clamp(e.clientX - rect.left, GLOW_SAFE_MARGIN, rect.width - GLOW_SAFE_MARGIN));
+    spotlightY.set(clamp(e.clientY - rect.top, GLOW_SAFE_MARGIN, rect.height - GLOW_SAFE_MARGIN));
   }
 
   return (
@@ -38,12 +49,13 @@ export default function Hero() {
       {!reduceMotion && (
         <motion.div
           aria-hidden
-          className="pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full opacity-70 mix-blend-plus-lighter"
+          className="pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full mix-blend-plus-lighter"
           style={{
             left: springX,
             top: springY,
             x: "-50%",
             y: "-50%",
+            opacity: spotlightOpacity,
             background:
               "radial-gradient(circle, rgba(236,72,153,0.25), rgba(139,92,246,0.15) 45%, transparent 70%)",
           }}

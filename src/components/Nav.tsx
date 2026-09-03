@@ -23,8 +23,8 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-card-border" : ""
+      className={`fixed inset-x-0 top-0 z-50 border-b border-b-transparent backdrop-blur-md transition-colors duration-300 ${
+        scrolled ? "bg-background/80 border-b-card-border" : ""
       }`}
     >
       <div data-nav-bar className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">

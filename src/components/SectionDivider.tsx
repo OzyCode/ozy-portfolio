@@ -121,7 +121,7 @@ export default function SectionDivider({ index = 0 }: { index?: number }) {
         className="absolute left-1/2 top-1/2 h-32 w-72 -translate-x-1/2 -translate-y-1/2 sm:w-96"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-35% 0px" }}
+        viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <motion.div
@@ -152,14 +152,14 @@ export default function SectionDivider({ index = 0 }: { index?: number }) {
           strokeLinecap="round"
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 0.8 }}
-          viewport={{ once: true, margin: "-35% 0px" }}
+          viewport={{ once: true, margin: "-10% 0px" }}
           transition={{ duration: 1.3, ease: "easeInOut" }}
         />
 
         <motion.g
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-35% 0px" }}
+          viewport={{ once: true, margin: "-10% 0px" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 1.1 }}
         >
           {/* generous invisible hit area — the visible bead stays small */}
