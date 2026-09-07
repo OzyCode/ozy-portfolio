@@ -12,6 +12,11 @@ Built with:
 ## Getting started
 
 ```bash
+git clone https://github.com/OzyCode/ozy-portfolio.git
+cd ozy-portfolio
+```
+
+```bash
 npm install
 npm run dev
 ```
