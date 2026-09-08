@@ -17,7 +17,7 @@ Selected from 1,500+ global applicants (one of ~30 accepted) into SAP's Young Pr
 - [Horse Racing Database System](https://github.com/OzyCode/ICS424_HorseRace): PostgreSQL analytical database with optimized queries, stored procedures, and triggers.
 - [Uber Trip Analytics & ML Predictor](https://github.com/muzammilbehzad/Students-Projects-ICS474-Big-Data-Analytics-Fall-2024/tree/main/Project_s201970750_s201970370): Predictive models (Linear Regression, Random Forest) on trip patterns.
 - [Blood Drive Management System](https://github.com/jawad-alalasi/ICS321): Web platform for managing blood donation drives, built with Agile practices.
-- [This Portfolio](https://github.com/OzyCode/animations-demo): This site itself — built with Next.js and Motion for React, exploring scroll-driven reveals, gradient motion, and reduced-motion-aware interactions.
+- [This Portfolio](https://github.com/OzyCode/ozy-portfolio): This site itself — built with Next.js and Motion for React, exploring scroll-driven reveals, gradient motion, and reduced-motion-aware interactions.
 
 ## Skills
 

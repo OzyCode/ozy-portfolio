@@ -122,7 +122,7 @@ export const secondaryProjects = [
     description:
       "This site — built with Next.js and Motion for React, exploring scroll-driven reveals, gradient motion, and reduced-motion-aware interactions.",
     tags: ["Next.js", "Motion", "Tailwind CSS"],
-    href: "https://github.com/OzyCode/animations-demo",
+    href: "https://github.com/OzyCode/ozy-portfolio",
   },
 ];
 
