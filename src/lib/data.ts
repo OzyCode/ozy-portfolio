@@ -1,12 +1,12 @@
 export const profile = {
   name: "Osamah AlBahnasi",
-  role: "Junior SAP Consultant · Software Engineer",
+  role: "SAP Consultant · Software Engineer",
   location: "Saudi Arabia",
   tagline:
     "SAP-certified consultant and software engineer who's led delivery teams, shipped enterprise tooling, and is now taking that into ERP consulting.",
-  bio: "SAP-certified junior consultant selected from 1,500+ global applicants for SAP's Young Professionals Program (YPP) — one of ~30 accepted — with dual SAP associate certifications in E2E Business Processes and Generative AI. Enterprise software delivery experience at RFID Saudi Trading Company, where I took ownership of a cross-functional development team as business analyst and delivery lead, with strong stakeholder communication and documentation skills. Targeting a junior SAP consultant role (ERP / S/4HANA / BTP).",
+  bio: "I'm an SAP-certified consultant and software engineer. I got into SAP through the Young Professionals Program — one of about 30 people picked out of 1,500+ applicants worldwide — and came out with certifications in E2E Business Processes and Generative AI. Before that, I spent three years at RFID Saudi Trading Company, where I ended up running delivery for a team as business analyst and delivery lead across two internal platforms: coordinating with stakeholders, writing the specs, and keeping documentation people could actually use. Now I'm looking to bring that into SAP consulting — ERP, S/4HANA, BTP.",
   currentlyExploring:
-    "Outside of that, I've been digging into workflow automation — building and experimenting with n8n to connect systems and automate processes end-to-end.",
+    "Outside of that, I've been digging into workflow automation — building and experimenting with n8n to connect systems and automate processes from start to finish.",
   links: {
     github: "https://github.com/OzyCode",
     linkedin: "https://www.linkedin.com/in/osamakb/",
@@ -31,9 +31,9 @@ export const experience: {
     period: "04/2026 – 06/2026",
     location: "Riyadh, Saudi Arabia",
     points: [
-      "Selected from 1,500+ global applicants; one of ~30 accepted into SAP's flagship partner talent program.",
-      "Completed intensive training across SAP Business Suite, BTP, and Generative AI, including process walkthroughs and consulting-skills coursework.",
-      "Earned SAP Certified Associate credentials: E2E Business Processes (IEE2E) and Generative AI Developer (C_AIG).",
+      "Beat out 1,500+ applicants worldwide for one of roughly 30 spots in SAP's partner talent program.",
+      "Trained in S/4HANA, Business Suite, BTP, and Generative AI. Went through FI, CO, MM, PP, and SD process walkthroughs, plus a consulting-skills track.",
+      "Certified: E2E Business Processes (IEE2E) and Generative AI Developer (C_AIG).",
     ],
   },
   {
@@ -43,16 +43,16 @@ export const experience: {
     period: "10/2022 – 09/2025",
     location: "Dammam, Saudi Arabia",
     points: [
-      "Took ownership of a cross-functional team (UI/UX, PHP backend, Flutter mobile) by end of tenure, acting as business analyst and delivery lead — planned and managed team tasks and coordinated requirements with internal stakeholders.",
-      "Communicated app releases to internal stakeholders, gathered feedback, and authored user documentation and how-to manuals to support adoption.",
-      "Introduced structured documentation practices that improved cross-team communication and reduced friction between developers.",
-      "Performed SQL-based data cleaning and format standardization on the application server.",
+      "Took over as business analyst and delivery lead for a team spanning UI/UX, PHP backend, and Flutter mobile partway through my time there. Planned and managed the team's tasks and coordinated requirements directly with internal stakeholders.",
+      "Handled release communications to internal stakeholders. Collected feedback, wrote the user documentation and how-to guides that supported adoption.",
+      "Set up documentation practices that cut friction between developers.",
+      "Cleaned and standardized data on the application server with SQL.",
       {
-        text: "Compiled and presented a department-wide IT status and strategic roadmap review to leadership — covering security practices, documentation standards, and training processes across the app portfolio.",
+        text: "Built and presented a department-wide IT status review and strategic roadmap for leadership: security practices, documentation standards, training across the app portfolio.",
         video: "/videos/roadmap-presentation.mp4",
       },
       {
-        text: "Also contributed to the company website (owned documentation and content organization, working with the developer building it) and recovered/stabilized a previously-built internal password manager application for handoff to production.",
+        text: "Also contributed to the company website — owned documentation and content organization, working alongside its developer — and took over a dead internal password manager app, getting it stable for a production handoff.",
         muted: true,
       },
     ],

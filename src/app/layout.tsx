@@ -21,9 +21,9 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-const title = "Osamah AlBahnasi — Junior SAP Consultant & Software Engineer";
+const title = "Osamah AlBahnasi — SAP Consultant & Software Engineer";
 const description =
-  "SAP-certified junior consultant and software engineer. SAP YPP trainee, former delivery lead at RFID Saudi Trading Company.";
+  "SAP-certified consultant and software engineer. SAP YPP graduate, former delivery lead at RFID Saudi Trading Company.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://osamahalbahnasi.com"),
