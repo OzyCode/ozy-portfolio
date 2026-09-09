@@ -14,7 +14,7 @@ export const profile = {
   },
 };
 
-type ExperiencePoint = string | { text: string; muted?: boolean; video?: string };
+type ExperiencePoint = string | { text: string; muted?: boolean };
 
 export const experience: {
   org: string;
@@ -22,6 +22,8 @@ export const experience: {
   role: string;
   period: string;
   location: string;
+  summary: string;
+  summaryVideo?: string;
   points: ExperiencePoint[];
 }[] = [
   {
@@ -30,6 +32,8 @@ export const experience: {
     role: "Young Professionals Program (YPP) — Trainee",
     period: "04/2026 – 06/2026",
     location: "Riyadh, Saudi Arabia",
+    summary:
+      "Selected for SAP's flagship Young Professionals Program from 1,500+ global applicants — trained across S/4HANA, BTP, and Generative AI, earning two SAP Associate certifications.",
     points: [
       "Beat out 1,500+ applicants worldwide for one of roughly 30 spots in SAP's partner talent program.",
       "Trained in S/4HANA, Business Suite, BTP, and Generative AI. Went through FI, CO, MM, PP, and SD process walkthroughs, plus a consulting-skills track.",
@@ -42,17 +46,17 @@ export const experience: {
     role: "Software Engineer",
     period: "10/2022 – 09/2025",
     location: "Dammam, Saudi Arabia",
+    summary:
+      "Business analyst and delivery lead for a cross-functional team (UI/UX, PHP, Flutter) — coordinated stakeholders, shipped documentation practices, and presented a department-wide IT roadmap review to leadership.",
+    summaryVideo: "/videos/roadmap-presentation.mp4",
     points: [
       "Took over as business analyst and delivery lead for a team spanning UI/UX, PHP backend, and Flutter mobile partway through my time there. Planned and managed the team's tasks and coordinated requirements directly with internal stakeholders.",
       "Handled release communications to internal stakeholders. Collected feedback, wrote the user documentation and how-to guides that supported adoption.",
       "Set up documentation practices that cut friction between developers.",
       "Cleaned and standardized data on the application server with SQL.",
+      "Built and presented a department-wide IT status review and strategic roadmap for leadership: security practices, documentation standards, training across the app portfolio.",
       {
-        text: "Built and presented a department-wide IT status review and strategic roadmap for leadership: security practices, documentation standards, training across the app portfolio.",
-        video: "/videos/roadmap-presentation.mp4",
-      },
-      {
-        text: "Also contributed to the company website — owned documentation and content organization, working alongside its developer — and took over a dead internal password manager app, getting it stable for a production handoff.",
+        text: "Also contributed to the company website — owned documentation and content organization, working alongside the developer — and took over a dead internal password manager app, getting it stable for a production handoff.",
         muted: true,
       },
     ],
@@ -63,6 +67,7 @@ export const experience: {
     role: "Technology Coordinator Assistant",
     period: "07/2018 – 08/2018",
     location: "Dhahran, Saudi Arabia",
+    summary: "Deployed and configured 800+ Raspberry Pi devices for a national educational rollout.",
     points: [
       "Deployed and configured 800+ Raspberry Pi devices for national educational initiatives.",
       "Assisted with system setup, troubleshooting, and technical coordination across multiple institutions.",
@@ -177,6 +182,24 @@ export const education = {
   schoolHref: "https://www.kfupm.edu.sa/",
   period: "09/2019 – 12/2024",
   location: "Dhahran, Saudi Arabia",
+  photos: [
+    {
+      src: "/images/kfupm-water-tower.jpg",
+      alt: "KFUPM's landmark water tower, lit at night",
+      width: 900,
+      height: 1600,
+      caption: "KFUPM's landmark water tower, lit up at night.",
+      quote: false,
+    },
+    {
+      src: "/images/kfupm-campus-night.jpg",
+      alt: "KFUPM campus at night",
+      width: 1200,
+      height: 1600,
+      caption: "Some of my best thinking happened after the campus emptied out.",
+      quote: true,
+    },
+  ],
 };
 
 export const extracurricular = {
@@ -185,6 +208,17 @@ export const extracurricular = {
   period: "09/2016 – 05/2024",
   location: "Saudi Arabia",
   points: ["8 years of presentation & structured communication; 4th place, KFUPM Storytelling Contest."],
+  photo: {
+    src: "/images/ktmc-speaking.jpg",
+    alt: "Speaking at a KTMC (Toastmasters) event",
+    width: 1200,
+    height: 1600,
+    caption: "Presenting at a session run by KTMC — KFUPM's Toastmasters club.",
+  },
+  clips: [
+    { label: "Icebreaker", src: "/videos/toastmasters-icebreaker.mp4" },
+    { label: "4th place round", src: "/videos/toastmasters-competition.mp4" },
+  ],
 };
 
 export const stats = [

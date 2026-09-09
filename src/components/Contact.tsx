@@ -23,7 +23,7 @@ export default function Contact() {
           <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan">
             Contact
           </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-h2 font-bold tracking-tight">
             Let&apos;s <span className="gradient-text gradient-text-animated">talk</span>
           </h2>
           <p className="mx-auto mt-4 max-w-md text-muted">

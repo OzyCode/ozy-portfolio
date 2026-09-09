@@ -41,7 +41,7 @@ export default function ExternalLink({
         <Tooltip.Content
           sideOffset={8}
           collisionPadding={12}
-          className="tooltip-content z-50 flex items-center gap-2 rounded-lg border border-card-border bg-card px-3 py-2 text-xs text-muted shadow-lg"
+          className="tooltip-content z-50 flex items-center gap-2 rounded-lg border border-card-border bg-card px-3 py-2 text-caption text-muted shadow-lg"
           style={{ transformOrigin: "var(--radix-tooltip-content-transform-origin)" }}
         >
           {showFavicon ? (

@@ -72,7 +72,7 @@ export default function Hero() {
           {profile.role}
         </motion.p>
 
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="max-w-3xl text-h1 font-bold tracking-tight">
           {words.map((word, i) => (
             <motion.span
               key={i}

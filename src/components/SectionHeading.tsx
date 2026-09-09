@@ -10,7 +10,7 @@ export default function SectionHeading({
   return (
     <RevealItem className="mb-12">
       <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan">{eyebrow}</p>
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="text-h2 font-bold tracking-tight">{title}</h2>
     </RevealItem>
   );
 }

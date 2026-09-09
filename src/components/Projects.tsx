@@ -13,8 +13,8 @@ function TagList({ tags, small }: { tags: string[]; small?: boolean }) {
       {tags.map((tag) => (
         <span
           key={tag}
-          className={`rounded-full border border-card-border text-muted ${
-            small ? "px-2.5 py-0.5 text-[11px]" : "px-3 py-1 text-xs"
+          className={`rounded-full border border-card-border text-caption text-muted ${
+            small ? "px-2.5 py-0.5" : "px-3 py-1"
           }`}
         >
           {tag}
@@ -42,13 +42,13 @@ export default function Projects() {
 
                   <div className="mt-5 space-y-4">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
+                      <p className="text-caption font-semibold uppercase tracking-widest text-cyan">
                         Problem
                       </p>
                       <p className="mt-1.5 leading-relaxed text-muted">{project.problem}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-pink">
+                      <p className="text-caption font-semibold uppercase tracking-widest text-pink">
                         Role
                       </p>
                       <p className="mt-1.5 leading-relaxed text-muted">{project.role}</p>
@@ -58,7 +58,7 @@ export default function Projects() {
 
                 <div>
                   <div className="mt-4">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-orange">
+                    <p className="text-caption font-semibold uppercase tracking-widest text-orange">
                       Result
                     </p>
                     <p className="mt-1.5 leading-relaxed text-muted">{project.result}</p>
@@ -90,7 +90,7 @@ export default function Projects() {
                     />
                   )}
                 </div>
-                <p className="mt-1 text-[11px] uppercase tracking-widest text-muted">
+                <p className="mt-1 text-caption uppercase tracking-widest text-muted">
                   {project.period}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>

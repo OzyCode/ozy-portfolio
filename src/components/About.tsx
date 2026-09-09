@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { ArrowsOut } from "@phosphor-icons/react/dist/ssr";
 import { profile, extracurricular } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import TiltCard from "./TiltCard";
 import ExternalLink from "./ExternalLink";
+import VideoPreview from "./VideoPreview";
+import Lightbox from "./Lightbox";
 
 export default function About() {
   return (
@@ -52,18 +55,55 @@ export default function About() {
           </div>
 
           <div className="rounded-2xl border border-card-border bg-card px-6 py-5">
-            <p className="text-sm text-muted">
-              <ExternalLink
-                href={extracurricular.orgHref}
-                className="font-semibold text-foreground underline decoration-card-border underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
+            <div className="flex items-start gap-3">
+              <Lightbox
+                src={extracurricular.photo.src}
+                width={extracurricular.photo.width}
+                height={extracurricular.photo.height}
+                alt={extracurricular.photo.alt}
+                caption={extracurricular.photo.caption}
               >
-                {extracurricular.org}
-              </ExternalLink>{" "}
-              ·{" "}
-              {extracurricular.period}
-              <br />
-              {extracurricular.points[0]}
-            </p>
+                <button
+                  type="button"
+                  suppressHydrationWarning
+                  className="group relative aspect-[3/4] w-16 shrink-0 overflow-hidden rounded-lg border border-card-border sm:w-20"
+                >
+                  <Image
+                    src={extracurricular.photo.src}
+                    alt={extracurricular.photo.alt}
+                    fill
+                    sizes="5rem"
+                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                  />
+                  <span className="absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-background/80 text-foreground">
+                    <ArrowsOut size={11} weight="bold" />
+                  </span>
+                </button>
+              </Lightbox>
+              <p className="text-sm text-muted">
+                <ExternalLink
+                  href={extracurricular.orgHref}
+                  className="font-semibold text-foreground underline decoration-pink/40 underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
+                >
+                  {extracurricular.org}
+                </ExternalLink>{" "}
+                ·{" "}
+                {extracurricular.period}
+                <br />
+                {extracurricular.points[0]}
+              </p>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {extracurricular.clips.map((clip) => (
+                <VideoPreview
+                  key={clip.src}
+                  src={clip.src}
+                  label={clip.label}
+                  orientation="portrait"
+                  inline={false}
+                />
+              ))}
+            </div>
           </div>
         </RevealItem>
       </RevealGroup>

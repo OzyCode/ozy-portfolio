@@ -5,7 +5,17 @@ import * as Popover from "@radix-ui/react-popover";
 import { useReducedMotion } from "motion/react";
 import { Play, Pause } from "@phosphor-icons/react/dist/ssr";
 
-export default function VideoPreview({ src }: { src: string }) {
+export default function VideoPreview({
+  src,
+  label = "Preview the clip",
+  orientation = "landscape",
+  inline = true,
+}: {
+  src: string;
+  label?: string;
+  orientation?: "landscape" | "portrait";
+  inline?: boolean;
+}) {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -37,10 +47,12 @@ export default function VideoPreview({ src }: { src: string }) {
         <button
           type="button"
           suppressHydrationWarning
-          className="ml-1.5 inline-flex items-center gap-1.5 rounded-full border border-card-border px-2.5 py-1 align-middle text-xs whitespace-nowrap text-cyan transition-colors hover:border-pink hover:text-pink"
+          className={`glow-pulse-sm gradient-bg-animated inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold whitespace-nowrap text-white transition-transform duration-200 ease-out hover:scale-105 ${
+            inline ? "ml-1.5 align-middle" : ""
+          }`}
         >
-          <Play size={11} weight="fill" />
-          Preview the clip
+          <Play size={12} weight="fill" />
+          {label}
         </button>
       </Popover.Trigger>
       <Popover.Portal>
@@ -66,7 +78,9 @@ export default function VideoPreview({ src }: { src: string }) {
               onLoadedData={() => setIsLoading(false)}
               onWaiting={() => setIsLoading(true)}
               onPlaying={() => setIsLoading(false)}
-              className="block aspect-video w-72 object-cover sm:w-80"
+              className={`block object-cover ${
+                orientation === "portrait" ? "aspect-[9/16] w-44 sm:w-48" : "aspect-video w-72 sm:w-80"
+              }`}
             />
             {isLoading && (
               <div
