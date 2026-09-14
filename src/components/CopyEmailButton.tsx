@@ -27,7 +27,7 @@ export default function CopyEmailButton({ email }: { email: string }) {
       type="button"
       onClick={handleCopy}
       suppressHydrationWarning
-      className={`relative flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out cursor-pointer ${
+      className={`font-metadata relative flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out cursor-pointer ${
         copied ? "border-cyan/60 text-cyan" : "border-card-border hover:border-pink/60 hover:text-pink"
       }`}
     >

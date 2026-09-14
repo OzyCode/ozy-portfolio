@@ -1,4 +1,4 @@
-import { GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
+import { GithubLogo, LinkedinLogo, FileArrowDown } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/lib/data";
 import { RevealGroup, RevealItem } from "./Reveal";
 import Magnetic from "./Magnetic";
@@ -20,7 +20,7 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-5xl px-6 py-28">
       <RevealGroup className="rounded-3xl border border-card-border bg-card px-8 py-16 text-center sm:px-16">
         <RevealItem>
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-cyan">
+          <p className="font-metadata mb-2 text-sm font-medium uppercase tracking-widest text-cyan">
             Contact
           </p>
           <h2 className="text-h2 font-bold tracking-tight">
@@ -41,17 +41,28 @@ export default function Contact() {
             <Magnetic key={link.label} strength={0.2}>
               <ExternalLink
                 href={link.href}
-                className="flex items-center gap-2 rounded-full border border-card-border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:border-pink/60 hover:text-pink"
+                className="font-metadata flex items-center gap-2 rounded-full border border-card-border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:border-pink/60 hover:text-pink"
               >
                 <link.Icon size={18} weight="bold" aria-hidden="true" />
                 {link.value}
               </ExternalLink>
             </Magnetic>
           ))}
+
+          <Magnetic strength={0.2}>
+            <a
+              href="/cv/Osamah-AlBahnasi-CV.pdf"
+              download
+              className="flex items-center gap-2 rounded-full border border-card-border px-6 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:border-pink/60 hover:text-pink"
+            >
+              <FileArrowDown size={18} weight="bold" aria-hidden="true" />
+              Download CV
+            </a>
+          </Magnetic>
         </RevealItem>
       </RevealGroup>
 
-      <p className="mt-10 text-center text-sm text-muted">
+      <p className="font-metadata mt-10 text-center text-sm text-muted">
         © {new Date().getFullYear()} {profile.name}. Built with Next.js &amp; Motion.
       </p>
     </section>

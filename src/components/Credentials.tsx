@@ -14,9 +14,22 @@ export default function Credentials() {
 
         <div className="grid gap-6 md:grid-cols-2">
           <RevealItem className="rounded-2xl border border-card-border bg-card p-6">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-cyan">
-              Education
-            </h3>
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-cyan">
+                Education
+              </h3>
+              {education.schoolLogo && (
+                <div className="flex h-10 w-20 shrink-0 items-center justify-center overflow-hidden rounded-md border border-card-border bg-white p-1.5">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- small fixed-size
+                      school logo, object-contain sizing is simpler than next/image's fill model. */}
+                  <img
+                    src={education.schoolLogo}
+                    alt={`${education.school} logo`}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+              )}
+            </div>
             <p className="mt-4 font-semibold">{education.degree}</p>
             <ExternalLink
               href={education.schoolHref}
@@ -24,7 +37,7 @@ export default function Credentials() {
             >
               {education.school}
             </ExternalLink>
-            <p className="mt-1 text-sm text-muted">
+            <p className="font-metadata mt-1 text-sm text-muted">
               {education.period} · {education.location}
             </p>
             <div className="mt-4 flex gap-2">
@@ -65,14 +78,39 @@ export default function Credentials() {
             </h3>
             <ul className="mt-4 space-y-4">
               {certificates.map((cert) => (
-                <li key={cert.name}>
-                  <ExternalLink
-                    href={cert.href}
-                    className="font-medium leading-snug underline decoration-pink/40 underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
+                <li key={cert.name} className="flex items-start gap-3">
+                  <Lightbox
+                    src={cert.image.src}
+                    width={cert.image.width}
+                    height={cert.image.height}
+                    alt={`${cert.name} certificate`}
                   >
-                    {cert.name}
-                  </ExternalLink>
-                  <p className="text-sm text-muted">{cert.issuer}</p>
+                    <button
+                      type="button"
+                      suppressHydrationWarning
+                      className="group relative aspect-[4/3] w-14 shrink-0 overflow-hidden rounded-lg border border-card-border sm:w-16"
+                    >
+                      <Image
+                        src={cert.image.src}
+                        alt={`${cert.name} certificate`}
+                        fill
+                        sizes="4rem"
+                        className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                      />
+                      <span className="absolute bottom-0.5 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-background/80 text-foreground">
+                        <ArrowsOut size={9} weight="bold" />
+                      </span>
+                    </button>
+                  </Lightbox>
+                  <div className="min-w-0">
+                    <ExternalLink
+                      href={cert.href}
+                      className="font-medium leading-snug underline decoration-pink/40 underline-offset-4 transition-colors hover:text-pink hover:decoration-pink"
+                    >
+                      {cert.name}
+                    </ExternalLink>
+                    <p className="font-metadata text-sm text-muted">{cert.issuer}</p>
+                  </div>
                 </li>
               ))}
             </ul>

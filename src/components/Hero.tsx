@@ -63,35 +63,27 @@ export default function Hero() {
       )}
 
       <div className="mx-auto w-full max-w-5xl px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-4 text-sm font-medium uppercase tracking-widest text-cyan"
-        >
+        <p className="font-metadata mb-4 text-sm font-medium uppercase tracking-widest text-cyan">
           {profile.role}
-        </motion.p>
+        </p>
 
         <h1 className="max-w-3xl text-h1 font-bold tracking-tight">
           {words.map((word, i) => (
-            <motion.span
+            <span
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 + i * 0.05 }}
               className={`inline-block ${
                 word.includes("SAP") ? "gradient-text gradient-text-animated" : ""
               }`}
             >
               {word}&nbsp;
-            </motion.span>
+            </span>
           ))}
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
           className="mt-[clamp(1rem,2.5vh,1.5rem)] max-w-xl text-lg text-muted"
         >
           {profile.tagline}
@@ -100,7 +92,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.75 }}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
           className="mt-[clamp(1.5rem,4vh,2.5rem)] flex flex-wrap items-center gap-4"
         >
           <Magnetic>
@@ -132,15 +124,15 @@ export default function Hero() {
         <motion.dl
           initial="hidden"
           animate="show"
-          transition={{ staggerChildren: 0.08, delayChildren: 0.9 }}
-          className="mt-[clamp(1.5rem,5vh,4rem)] grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4"
+          transition={{ staggerChildren: 0.06, delayChildren: 0.3 }}
+          className="mt-[clamp(1.5rem,5vh,4rem)] grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8"
         >
           {stats.map((stat) => (
             <motion.div
               key={stat.label}
               variants={{
                 hidden: { opacity: 0, y: 14 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
               }}
             >
               <dt className="font-heading text-2xl font-bold sm:text-3xl">

@@ -11,14 +11,18 @@ export default function Lightbox({
   alt,
   caption,
   quote = false,
+  videoSrc,
   children,
 }: {
+  /** Poster/preview image — always the trigger thumbnail; also the video's poster frame when videoSrc is set. */
   src: string;
   width: number;
   height: number;
   alt: string;
   caption?: string;
   quote?: boolean;
+  /** When set, the modal plays this video (with controls) instead of showing a static image. */
+  videoSrc?: string;
   children: ReactNode;
 }) {
   return (
@@ -27,21 +31,29 @@ export default function Lightbox({
       <Dialog.Portal>
         <Dialog.Overlay className="lightbox-overlay fixed inset-0 z-50 bg-background/90 backdrop-blur-sm" />
         <Dialog.Content
-          className="lightbox-content fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[min(92vw,36rem)] overflow-hidden rounded-2xl border border-card-border bg-card shadow-2xl"
+          className="lightbox-content fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[min(92vw,56rem)] overflow-hidden rounded-2xl border border-card-border bg-card shadow-2xl"
           style={{ transform: "translate(-50%, -50%)" }}
         >
           <Dialog.Title className="sr-only">{alt}</Dialog.Title>
           <div className="flex max-h-[calc(85vh-4.5rem)] items-center justify-center bg-background">
-            {/* eslint-disable-next-line @next/next/no-img-element -- intrinsic
-                aspect ratio + object-contain is simpler here than next/image's
-                fill-and-crop model, matching the favicon <img> in ExternalLink. */}
-            <img
-              src={src}
-              alt={alt}
-              width={width}
-              height={height}
-              className="max-h-[calc(85vh-4.5rem)] w-auto max-w-full object-contain"
-            />
+            {videoSrc ? (
+              <video
+                src={videoSrc}
+                poster={src}
+                controls
+                playsInline
+                className="max-h-[calc(85vh-4.5rem)] w-auto max-w-full object-contain"
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element -- intrinsic aspect ratio + object-contain is simpler here than next/image's fill-and-crop model, matching the favicon <img> in ExternalLink.
+              <img
+                src={src}
+                alt={alt}
+                width={width}
+                height={height}
+                className="max-h-[calc(85vh-4.5rem)] w-auto max-w-full object-contain"
+              />
+            )}
           </div>
           {caption &&
             (quote ? (

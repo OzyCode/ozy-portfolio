@@ -43,7 +43,7 @@ export default function Skills() {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-background px-3 py-1.5 text-sm text-foreground/90 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-card-border hover:shadow-[0_0_16px_-2px_var(--color-pink)]"
+                    className="font-metadata rounded-full bg-background px-3 py-1.5 text-sm text-foreground/90 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-card-border hover:shadow-[0_0_16px_-2px_var(--color-pink)]"
                   >
                     {item}
                   </span>

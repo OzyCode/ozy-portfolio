@@ -11,14 +11,11 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <SectionDivider index={0} />
       <About />
-      <SectionDivider index={1} />
       <Experience />
-      <SectionDivider index={2} />
       <Projects />
-      <SectionDivider index={3} />
       <Skills />
-      <SectionDivider index={4} />
       <Credentials />
       <SectionDivider index={5} />
       <Contact />

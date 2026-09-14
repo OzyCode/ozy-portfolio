@@ -28,6 +28,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-space-grotesk);
+  --font-metadata: var(--font-jetbrains-mono);
 
   /* Fluid modular type scale — 16px body baseline, scaled by viewport
      distance (arm's length desktop vs. close-up, narrow mobile). Only H1/H2
